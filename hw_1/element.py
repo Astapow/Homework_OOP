@@ -4,26 +4,25 @@ class Element:
         self.boiling_point = boiling_point
 
     def agg_state(self, temp, scale='C'):
-        self.melting_point = self.convert_to_c(temp=self.melting_point, scale=scale)
-        self.boiling_point = self.convert_to_c(temp=self.boiling_point, scale=scale)
-
-        if temp > self.melting_point and temp < self.boiling_point:
-            return f'melt'
-        elif temp > self.boiling_point:
-            return f'boil'
+        temp = self.convert_to_c(temp, scale)
+        if temp >= self.boiling_point:
+            return 'Gaz'
+        elif self.melting_point <= temp < self.boiling_point:
+            return 'Liquid'
         else:
-            return f'in its aggregate state'
+            return 'Solid'
 
     def convert_to_c(self, temp, scale='C'):
         if scale == 'K':
-            return temp + 273, 15
+            return temp - 273.15
         elif scale == 'F':
-            return (temp * (9 / 5)) + 32
+            return (temp - 32) * (5 / 9)
         else:
             return temp
 
 
 if __name__ == '__main__':
     h2o = Element(melting_point=0, boiling_point=100)
+    selenium = Element(221, 685)
     print(h2o.agg_state(temp=1200, scale='F'))
-    print(h2o.convert_to_c(temp=800, scale='C'))
+    print(selenium.agg_state(222))
