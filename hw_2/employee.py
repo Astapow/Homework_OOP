@@ -94,8 +94,7 @@ if __name__ == '__main__':
     print(will_em > jane_em)
     print(will_em < jane_em)
 
-    # michael = Employee('michael', 95).check_salary(10)
-    # print(michael)
+
 
     oliver = Developer('oliver', 70, ('css', 'c+', 'python'))
     claus = Developer('claus', 85, ('js', 'java'))
