@@ -1,3 +1,6 @@
+from datetime import datetime, date
+
+
 class Employee:
     def __init__(self, name, salary_one_day):
         self.name = name
@@ -27,8 +30,18 @@ class Employee:
     def __ne__(self, other):
         return self.salary_one_day != other.salary_one_day
 
-    def check_salary(self, days):
-        return self.salary_one_day * days
+    def check_salary(self):
+        today = datetime.now()
+        day_now = today.day
+        month = today.month
+        year = today.year
+        work_day = 0
+
+        for day in range(1, day_now + 1):
+            temp = date(year=year, month=month, day=day)
+            if temp.weekday() < 5:
+                work_day += 1
+        return self.salary_one_day * work_day
 
 
 class Recruiter(Employee):
@@ -81,10 +94,13 @@ if __name__ == '__main__':
     print(will_em > jane_em)
     print(will_em < jane_em)
 
-    michael = Employee('michael', 95).check_salary(10)
-    print(michael)
+    # michael = Employee('michael', 95).check_salary(10)
+    # print(michael)
 
     oliver = Developer('oliver', 70, ('css', 'c+', 'python'))
     claus = Developer('claus', 85, ('js', 'java'))
     print(claus > oliver)
     print(claus + oliver)
+
+    wekkend = Developer('oliver', 70, ('css', 'c+', 'python')).check_salary()
+    print(wekkend)
