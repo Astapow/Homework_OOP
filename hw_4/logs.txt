@@ -1,0 +1,11 @@
+2023-02-24 21:20:29.669375:Traceback (most recent call last):
+  File "D:\OOP\OOP\app.py", line 30, in <module>
+    main()
+  File "D:\OOP\OOP\app.py", line 10, in main
+    recruiter = Recruiter('mark', 70, 'mark@gmail.com')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OOP\OOP\Employee.py", line 11, in __init__
+    self.validate()
+  File "D:\OOP\OOP\Employee.py", line 22, in validate
+    raise EmailAlreadyExistsException()
+Exceptions.EmailAlreadyExistsException
